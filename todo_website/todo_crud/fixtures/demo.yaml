@@ -1,0 +1,15 @@
+- model: todo_crud.todo
+  pk: 1
+  fields:
+    title: One-two, one-two, this is a test
+    done: false
+- model: todo_crud.todo
+  pk: 2
+  fields:
+    title: Add README file
+    done: true
+- model: todo_crud.todo
+  pk: 3
+  fields:
+    title: Destroy the world and kill all humans
+    done: false

@@ -39,6 +39,10 @@ Setup
     ```
     $ python manage.py migrate
     ```
+7. Load demo data:
+    ```
+    $ python manage.py loaddata demo
+    ```
 
 Usage
 -----
