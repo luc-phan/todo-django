@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.views import generic
+
+from .models import Todo
 
 # Create your views here.
 
-from django.http import HttpResponse
 
+class IndexView(generic.ListView):
+    template_name = 'todo_crud/index.html'
+    context_object_name = 'todos'
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the todo index.")
+    def get_queryset(self):
+        return Todo.objects.all()
