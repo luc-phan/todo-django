@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.core.exceptions import ValidationError
 
 from .models import Todo
-from .forms import TodoForm, TodoFormSet
+from .forms import IndexTodoForm, TodoFormSet, NewTodoForm
 
 # Create your views here.
 
@@ -13,11 +13,11 @@ class IndexView(generic.ListView):
     template_name = 'todo_crud/index.html'
 
     def get_queryset(self):
-        return Todo.objects.all().order_by('done')
+        return Todo.objects.all().order_by('done', '-created')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = TodoForm()
+        context['form'] = IndexTodoForm()
         context['formset'] = TodoFormSet(queryset=self.object_list)
         return context
 
@@ -34,3 +34,9 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Todo
     template_name = 'todo_crud/detail.html'
+
+
+class CreateView(generic.edit.CreateView):
+    model = Todo
+    form_class = NewTodoForm
+    success_url = reverse_lazy("index")
