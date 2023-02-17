@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>TODO list</title>
+        <style>
+            .done {
+                text-decoration: line-through;
+            }
+        </style>
     </head>
     <body>
         <h1>TODO list</h1>
@@ -16,11 +21,9 @@
                 <li>
                     {{ form.id }}
                     {{ form.done }}
-                    {% if form.done.value %}
-                    <s>{{ form.instance.title }}</s>
-                    {% else %}
-                    {{ form.instance.title }}
-                    {% endif %}
+                    <a href="{% url 'detail' form.instance.id %}" {% if form.done.value %}class="done"{% endif %}>
+                        {{ form.instance.title }}
+                    </a>
                 </li>
             {% endfor %}
             </ul>
