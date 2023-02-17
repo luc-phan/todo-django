@@ -1,3 +1,4 @@
+import logging
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
@@ -5,6 +6,8 @@ from django.core.exceptions import ValidationError
 
 from .models import Todo
 from .forms import IndexTodoForm, TodoFormSet, NewTodoForm
+
+_logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -28,6 +31,7 @@ class IndexView(generic.ListView):
             formset.save()
             return redirect(reverse_lazy("index"))
 
+        _logger.error("non_form_errors = %s", formset.non_form_errors())
         raise ValidationError(formset.errors)
 
 
