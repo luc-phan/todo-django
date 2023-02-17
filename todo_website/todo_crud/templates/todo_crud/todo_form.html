@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TODO new</title>
+    </head>
+    <body>
+        <h1>TODO new</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <dl>
+                <dt>Title</dt>
+                <dd>{{ form.title }}</dd>
+
+                <td>Description</td>
+                <dd>{{ form.description }}</dd>
+            </dl>
+            <input type="submit" value="New" />
+        </form>
+    </body>
+</html>
