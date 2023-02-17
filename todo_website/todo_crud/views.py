@@ -29,3 +29,8 @@ class IndexView(generic.ListView):
             return redirect(reverse_lazy("index"))
 
         raise ValidationError(formset.errors)
+
+
+class DetailView(generic.DetailView):
+    model = Todo
+    template_name = 'todo_crud/detail.html'
