@@ -8,7 +8,7 @@ from .models import Todo
 # Create your tests here.
 
 
-class  TodoIndexViewTests(TestCase):
+class TodoIndexViewTests(TestCase):
     def test_nothing_todo(self):
         """
         If no TODO exist, an appropriate message is displayed.
