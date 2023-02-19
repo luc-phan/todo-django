@@ -1,21 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>TODO details</title>
-    </head>
-    <body>
-        <h1>TODO details</h1>
+{% extends "todo_crud/base.html" %}
 
-        <dl>
-            <dt>Title</dt>
-            <dd>{{ todo.title }}</dd>
+{% block title %}TODO details{% endblock %}
 
-            <td>Done</td>
-            <dd>{{ todo.done }}</dd>
+{% block style %}
+.description {
+    height: 200px;
+    border: 0px;
+    padding: 0px;
+}
+{% endblock %}
 
-            <td>Description</td>
-            <dd>{{ todo.description }}</dd>
-        </dl>
-    </body>
-</html>
+{% block content %}
+<h1>TODO details</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Title</dt>
+    <dd class="col-sm-9">{{ todo.title }}</dd>
+
+    <dt class="col-sm-3">Done</dt>
+    <dd class="col-sm-9">{{ todo.done }}</dd>
+
+    <dt class="col-sm-3">Description</dt>
+    <dd class="col-sm-9">
+        <textarea readonly class="form-control description">{{ todo.description }}</textarea>
+    </dd>
+</dl>
+{% endblock %}

@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.core.exceptions import ValidationError
 
 from .models import Todo
-from .forms import IndexTodoForm, TodoFormSet, NewTodoForm
+from .forms import TodoFormSet, NewTodoForm
 
 _logger = logging.getLogger(__name__)
 
@@ -20,7 +20,6 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = IndexTodoForm()
         context['formset'] = TodoFormSet(queryset=self.object_list)
         return context
 
