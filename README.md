@@ -74,3 +74,9 @@ Cleanup
     ```
     $ pipenv --rm
     ```
+
+TODO
+----
+
+- ~~Icons~~
+- Static files
