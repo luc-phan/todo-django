@@ -79,4 +79,4 @@ TODO
 ----
 
 - ~~Icons~~
-- Static files
+- ~~Static files~~
