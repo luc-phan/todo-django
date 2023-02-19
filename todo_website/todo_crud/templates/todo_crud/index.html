@@ -1,40 +1,51 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>TODO list</title>
-        <style>
-            .done {
-                text-decoration: line-through;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>TODO list</h1>
+{% extends "todo_crud/base.html" %}
 
-        {% if formset.forms %}
-        <form method="POST">
-            {% csrf_token %}
-            {{ formset.management_form }}
-            <ul>
-            {% for form in formset %}
-                <li>
-                    {{ form.id }}
-                    {{ form.done }}
-                    <a href="{% url 'detail' form.instance.id %}" {% if form.done.value %}class="done"{% endif %}>
-                        {{ form.instance.title }}
-                    </a>
-                </li>
-            {% endfor %}
-            </ul>
-            <input type="submit" value="Update"/>
-        </form>
-        {% else %}
-            <p>Nothing TODO.</p>
-        {% endif %}
+{% block title %}TODO list{% endblock %}
 
-        <p>
-            <a href="{% url 'new' %}">New TODO</a>
-        </p>
-    </body>
-</html>
+{% block style %}
+.done {
+    text-decoration: line-through;
+}
+{% endblock %}
+
+{% block content %}
+<h1>TODO list</h1>
+
+{% if formset.forms %}
+<form method="POST">
+    {% csrf_token %}
+    {{ formset.management_form }}
+
+    <p>
+        <ul class="list-group">
+        {% for form in formset %}
+            <li class="list-group-item">
+                {{ form.id }}
+                {{ form.done }}
+                <a
+                    href="{% url 'detail' form.instance.id %}"
+                    {% if form.done.value %}
+                        class="link-primary done"
+                    {% else %}
+                        class="link-primary"
+                    {% endif %}
+                >
+                    {{ form.instance.title }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </p>
+
+    <p>
+        <input type="submit" value="Update" class="btn btn-primary"/>
+    </p>
+</form>
+{% else %}
+    <p>Nothing TODO.</p>
+{% endif %}
+
+<p>
+    <a href="{% url 'new' %}" class="btn btn-success">New</a>
+</p>
+{% endblock %}
