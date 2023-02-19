@@ -1,6 +1,8 @@
 todo-django
 ===========
 
+![Screenshot](todo-django.png)
+
 Environment
 -----------
 
