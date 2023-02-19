@@ -53,6 +53,14 @@ Usage
     ```
 2. Open http://localhost:8000/ with a web browser.
 
+Test
+----
+
+1. Run tests:
+    ```
+    $ python manage.py test
+    ```
+
 Cleanup
 -------
 
